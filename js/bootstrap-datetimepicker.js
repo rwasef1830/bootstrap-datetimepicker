@@ -1867,8 +1867,8 @@
       var $this = $(this);
       if ($this.data('datetimepicker')) return;
       e.preventDefault();
-      // component click requires us to explicitly show it
-      $this.datetimepicker('show');
+      $this.datetimepicker();
+      $(e.target).click();
     }
   );
   $(function () {
