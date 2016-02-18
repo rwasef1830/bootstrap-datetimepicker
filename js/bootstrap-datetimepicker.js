@@ -1444,6 +1444,10 @@
 
     reset: function () {
       this._setDate(null, 'date');
+      if (e) {
+        e.stopPropagation();
+        e.preventDefault();
+      }
     },
 
     convertViewModeText:  function (viewMode) {
