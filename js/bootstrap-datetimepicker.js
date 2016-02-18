@@ -567,16 +567,12 @@
         left = bodyWidth - 220;
       }
 
-      if (this.component) {
-        top = top - containerOffset.top + 169;
-        left = left - containerOffset.left + 210;
-      } else {
+      
         if (this.pickerPosition == 'top-left' || this.pickerPosition == 'top-right') {
           top = offset.top - this.picker.outerHeight();
         } else {
           top = offset.top + this.height;
         }
-      }
 
       this.picker.css({
         top:    top,
