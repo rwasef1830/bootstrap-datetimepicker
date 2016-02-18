@@ -387,6 +387,7 @@
 
     getDate: function () {
       var d = this.getUTCDate();
+      if (!d) return null;
       return new Date(d.getTime() + (d.getTimezoneOffset() * 60000));
     },
 
@@ -564,15 +565,15 @@
 
       var bodyWidth = document.body.clientWidth || window.innerWidth;
       if (left + 220 > bodyWidth) {
-        left = bodyWidth - 220;
+          left = bodyWidth - 220;
       }
 
       
-        if (this.pickerPosition == 'top-left' || this.pickerPosition == 'top-right') {
-          top = offset.top - this.picker.outerHeight();
-        } else {
+      if (this.pickerPosition == 'top-left' || this.pickerPosition == 'top-right') {
+        top = offset.top - this.picker.outerHeight();
+      } else {
           top = offset.top + this.height;
-        }
+      }
 
       this.picker.css({
         top:    top,
