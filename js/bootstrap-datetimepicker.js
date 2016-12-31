@@ -1957,8 +1957,7 @@
       var $this = $(this);
       if ($this.data('datetimepicker')) return;
       e.preventDefault();
-      // component click requires us to explicitly show it
-      $this.datetimepicker('show');
+      $(e.target).click();
     }
   );
   $(function () {
