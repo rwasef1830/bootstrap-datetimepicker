@@ -1442,12 +1442,12 @@
       this.updateNavArrows();
     },
 
-    reset: function () {
-      this._setDate(null, 'date');
-      if (e) {
-        e.stopPropagation();
-        e.preventDefault();
-      }
+    reset: function(e) {
+        this._setDate(null, 'date');
+        if (e) {
+            e.stopPropagation();
+            e.preventDefault();
+        }
     },
 
     convertViewModeText:  function (viewMode) {
@@ -1957,6 +1957,8 @@
       var $this = $(this);
       if ($this.data('datetimepicker')) return;
       e.preventDefault();
+      // component click requires us to explicitly show it
+      $this.datetimepicker();
       $(e.target).click();
     }
   );
