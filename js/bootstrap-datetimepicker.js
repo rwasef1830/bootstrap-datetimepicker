@@ -207,8 +207,7 @@
     this.picker = $(template)
       .appendTo(this.isInline ? this.element : this.container) // 'body')
       .on({
-        click:     $.proxy(this.click, this),
-        mousedown: $.proxy(this.mousedown, this)
+        click:     $.proxy(this.click, this)
       });
 
     if (this.wheelViewModeNavigation) {
