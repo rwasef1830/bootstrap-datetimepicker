@@ -54,7 +54,7 @@
   function timeZoneAbbreviation() {
     var abbreviation, date, formattedStr, i, len, matchedStrings, ref, str;
     date = (new Date()).toString();
-    formattedStr = ((ref = date.split('(')[1]) !== null ? ref.slice(0, -1) : 0) || date.split(' ');
+    formattedStr = ((ref = date.split('(')[1]) != null ? ref.slice(0, -1) : 0) || date.split(' ');
     if (formattedStr instanceof Array) {
       matchedStrings = [];
       for (var i = 0, len = formattedStr.length; i < len; i++) {
@@ -297,7 +297,9 @@
       if (this.date.getUTCFullYear() === date.getUTCFullYear()) {
         res.push('active');
       }
-      if (date < this.startDate || date > this.endDate) {
+      var currentYear = date.getUTCFullYear();
+      var endYear = this.endDate.getUTCFullYear();
+      if (date < this.startDate || currentYear > endYear) {
         res.push('disabled');
       }
       return res.concat((render ? render : []));
@@ -543,7 +545,7 @@
       this.datesDisabled = $.map(this.datesDisabled, function (d) {
         return DPGlobal.parseDate(d, mThis.format, mThis.language, mThis.formatType, mThis.timezone).toDateString();
       });
-      this.update();
+      this.fill();
       this.updateNavArrows();
     },
 
@@ -1690,7 +1692,7 @@
                 filtered = $(dates[language].months).filter(function () {
                   var m = this.slice(0, parts[i].length),
                     p = parts[i].slice(0, m.length);
-                  return m === p;
+                  return m.toLowerCase() === p.toLowerCase();
                 });
                 val = $.inArray(filtered[0], dates[language].months) + 1;
                 break;
